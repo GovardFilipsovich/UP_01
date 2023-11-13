@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), CalendarView.OnDateChangeListener {
     private var people = mapOf<String, LocalDate>(
         Pair("Василий Панков", LocalDate.of(2003,11, 5)),
         Pair("Кирилл Гайкин", LocalDate.of(2003,9, 18)),
-        Pair("Игорь Осыкин", LocalDate.of(2003,11, 11)),
+        Pair("Игорь Осыкин", LocalDate.of(2003,11, 5)),
         )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +38,6 @@ class MainActivity : AppCompatActivity(), CalendarView.OnDateChangeListener {
     }
 
     override fun onSelectedDayChange(p0: CalendarView, p1: Int, p2: Int, p3: Int) {
-
-
-
             people.forEach{ human ->
                 var date = human.value
                 var name = human.key
@@ -50,9 +47,11 @@ class MainActivity : AppCompatActivity(), CalendarView.OnDateChangeListener {
                         .setContentTitle("Не забудьте поздравить!!!")
                         .setContentText("Сегодня день рождение у " + name)
                     if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) { return }
-
+                    manager.cancel(R.id.BOLSHOI_NOTFICATION_ID)
                     manager.notify(R.id.BOLSHOI_NOTFICATION_ID, builder.build())
-            }
+                } else{
+                    manager.cancel(R.id.BOLSHOI_NOTFICATION_ID)
+                }
 
         }
     }

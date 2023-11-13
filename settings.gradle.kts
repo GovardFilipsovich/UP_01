@@ -17,3 +17,5 @@ rootProject.name = "My Application"
 include(":app")
 include(":complexnotify")
 include(":calendar")
+include(":diagrams")
+include(":picasso")

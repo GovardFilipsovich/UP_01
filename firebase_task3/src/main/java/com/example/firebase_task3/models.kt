@@ -13,5 +13,6 @@ data class Order(
     val id: Long = 0,
     val products: List<Product> = listOf(),
     val time: Int = 0,
-    val sum: Int = 0
+    val sum: Int = 0,
+    var user_id: String
 )
